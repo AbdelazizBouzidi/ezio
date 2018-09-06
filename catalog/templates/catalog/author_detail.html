@@ -1,0 +1,104 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<style>
+    .book{
+       background-color: gray;
+        color: floralwhite;
+        display: block;
+        min-height: 450px;
+        min-width: 550px;
+        width:80%;
+        font-size: 20px;
+        left:10%;
+        float: left;
+        border-radius: 5%;
+        position: relative;
+        overflow: auto;
+
+    }
+    .book:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+    .img{
+       position: absolute;
+        top: 20px;
+        right: 0;
+
+    }
+    .detail{
+        position: absolute;
+        float: left;
+        text-align: left;
+        left: 0;
+        top: 10%;
+        font-family: 'Concert One', cursive;
+    }
+    .aa{
+        position: absolute;
+    float: center;
+    color: transparent;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 10px;
+       bottom: 5%;
+        left: 50%;
+    }
+    .aa:hover {
+    background-color: transparent;
+    color: black;
+    min-height: 50;
+    text-decoration: none;
+
+
+}
+     h2  {
+font-family: 'Concert One', cursive;
+font-family: 'Sacramento', cursive;
+font-family: 'Kalam', cursive;
+font-family: 'Shadows Into Light Two', cursive;
+    }
+    .sum{
+overflow-wrap: break-word;
+        width: 500px;
+
+    }
+    aaa{
+    display:disabled
+    }
+    .qw{
+        text-decoration:none;
+        color: #d1ecfb
+    }
+    .qw:hover{
+        text-decoration:none;
+    color:white
+    }
+
+</style>
+  <h2>{{ author.first_name }},{{ author.last_name }}</h2>
+<div  class="book">
+   <div class="img"><img height="400px" width="330px" src="/media/{{ author.picture }}"></div>
+<div class="detail">
+  {% ifequal author.date_of_death "Still Alive" %}
+      <p><strong>Date of birth:</strong> {{author.date_of_birth}} </p>
+  {% else %}
+    <p>
+         <p><strong>Date of birth:</strong> {{author.date_of_birth}}</p>
+      <p><strong>Died:</strong> {{author.date_of_death}}</p></p>
+  {% endifequal %}
+   <ul>
+    <strong>Books he wrote:</strong>
+    {% for book in book_list %}
+     {% ifequal book.author author %}
+      <li>
+          <p><a class="qw" href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>
+      </li>
+     {% endifequal %}
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% extends "base_generic.html" %}
+{% block content %}
+{% csrf_token %}
+
+<style >
+    .back{
+        background-image: url("/media/lib.jpg");
+        background-repeat: no-repeat;
+        background-attachment:fixed;
+        background-size: cover;
+        position: relative;
+        min-height: 600px;
+        background-repeat:no-repeat;
+        background-size:100% 100vh;
+    }
+    .title{
+        position: absolute;
+        height: auto;
+        left:30%;  
+        right: 30%;
+        top: 160px;
+        border-color: floralwhite;
+        border-bottom: solid 2px floralwhite;
+        border-top: solid 2px floralwhite;
+        border-bottom-left-radius: 15%;
+        border-top-left-radius: 15%;
+        border-top-right-radius: 15%;
+        border-bottom-right-radius: 15%;
+        font-family: 'Concert One', cursive;
+        font-family: 'Sacramento', cursive;
+        font-family: 'Kalam', cursive; 
+        color: floralwhite;
+     
+    }
+    .pad{
+         font-size: 50px;
+        padding: 0;
+        margin: 5px;
+    }
+    .contt{ text-align: center;
+        position: relative;
+        top: 50px;
+        
+    }
+    .conttt{ text-align: center;
+        position: relative;
+        top: 0;
+        background-color: #333;
+        width: 100%;
+        z-index: 10px;
+    }
+    
+    span{
+    }
+    .li{
+           list-style: none; 
+           display: inline;
+        min-height: 100px;
+           margin: 0;
+           padding: 0;
+    font-family: 'Concert One', cursive;
+
+
+        
+        }
+   .li .a:hover {
+    background-color: #ddd;
+    color: black;
+    min-height: 100px;
+       text-decoration: none;
+    
+
+}
+    .divi{
+        text-align: center;
+        margin: auto;
+        position: relative;
+        top: 195px;
+        
+    }
+    .a{
+    float: center;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 18px 8px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 10px;
+        margin: 0;
+    }
+    .p{
+        display:inline;
+        padding: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        font-size: 25px;
+        color: floralwhite;
+        font-family: 'Concert One', cursive;
+        
+    }
+    .father .li{
+        padding: 0;
+        margin: 0;
+    }
+    .Wel{
+       font-size: 20px;
+        font-family: 'Concert One', cursive;
+
+    font-family: 'Sawarabi Gothic', sans-serif;
+
+    font-family: 'Indie Flower', cursive;
+        color: floralwhite;
+    }
+    section{
+    position: relative;
+    text-align: center;
+    top: 20%;
+   margin: 0;
+    height: auto;
+    width: auto;
+   background-color: transparent;
+    border-radius: 14px;
+}
+section figure{
+  position: relative;
+     width:200px;
+    height:200px;
+    margin: auto;
+    display:inline-block;
+    top: 10%;
+    bottom: 10%;
+    left: -100px;
+    padding: 10px -11%;
+    left: 0;right:
+}
+section figure img {
+    position: relative;
+   padding: 0;
+    margin: 0;
+    width: 60%;
+    height:60%;
+    left: 0;
+    right: 0;
+
+}
+section figcaption{
+    height: 5%;
+    color: floralwhite;
+font-family: 'Concert One', cursive;
+
+}
+   body{
+    background-color: azure;
+    }
+    #footer{
+   
+    bottom: 0;
+    
+}
+</style>
+<div class="back">
+<div class="contt">
+    <img height="80px" width="80px" src="/media/AAA.png">
+    <div class="Wel">Welcome To</div>
+<div class="title"><h1 class="pad">Worldwide Library</h1></div>
+<div class="divi">
+      <p class="p">For now we do have:</p>
+    <div class="father">
+      <li class="li"><a href="{% url 'books' %}" class="a"><img height="80px" width="45px" src="/media/books-stack-of-three.svg"> {{ num_books }}</a></li>
+    <li class="li"><a href="{% url 'authors' %}" class="a"><img height="80" width="45px"src="/media/becquer.svg"> {{ num_authors }}</a></li>
+    </div>
+  </div>
+</div>
+    </div>
+<div class="conttt">
+<section> <figure><img src="/media/images/languTranslation.svg"><figcaption>Will be soon available with two different languages</figcaption></figure>
+            <figure><img src="/media/images/ideaaa.svg"><figcaption>Become a member of a huge comunity of well cultred people </figcaption></figure>
+            <figure><img src="/media/images/search.svg"><figcaption >You can't find your book? don't worry we will affoard it soon</figcaption></figure>
+            <figure><img src="/media/images/coin.svg"><figcaption>Everything in our website is free</figcaption></figure>
+            </section>
+        </div>
+ <div id="footer"><div class="Copy"><li>Copyright &copy;. 2018 This website has been created and designed by <br>Bouzidi Abdelaziz,Made in Algeria &#x1F495 </li></div>
+     <div class="CU"> <li><strong class="Cu">Contact Us:</strong> <a href="https://web.facebook.com/MouTha9afoune"><img class="im" height="50px" width="50px" src="/media/facebook.svg"></a></li></div>
+    </div>
+
+{% endblock %}

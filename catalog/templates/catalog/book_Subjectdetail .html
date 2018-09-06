@@ -1,0 +1,97 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<style>
+    .book{
+       background-color: gray;
+        color: floralwhite;
+        display: block;
+        min-height: 450px;
+          min-width: 550px;
+        width:80%;
+        left: 10%;
+        font-size: 20px;
+        float: left;
+        border-radius: 5%;
+        position: relative;
+        overflow: auto;
+            
+    }
+    .book:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+    .img{
+       position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .detail{
+        position: absolute;
+        float: left;
+        text-align: left;
+        left: 10px;
+        top: 10%;
+        font-family: 'Concert One', cursive;
+    }
+    .qw{
+        color: #d1ecfb
+    }
+    .aa{
+        position: absolute;
+    float: center;
+    color: transparent;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 10px;
+       bottom: 5%; 
+        left: 50%;
+    }
+    .aa:hover {
+    background-color: transparent;
+    color: black;
+    min-height: 50;
+    text-decoration: none;
+        
+
+}
+     h2  {  
+font-family: 'Concert One', cursive;
+font-family: 'Sacramento', cursive;
+font-family: 'Kalam', cursive;
+font-family: 'Shadows Into Light Two', cursive;
+           min-width: 600px;
+    }
+    .sum{
+overflow-wrap: break-word;
+        width: 500px;
+    }
+    aaa{
+    display:disabled
+    }
+     
+</style>
+  <h2>Title: {{ book.title }}</h2>
+<div  class="book">
+   <div class="img"><img height="400px" width="300px" src="/media/{{ book.Cover_Pic }}"></div> 
+<div class="detail">
+    <p><strong>Author:</strong><a class="qw" href="{% url 'author-detail' book.author.pk %}"> {{ book.author }} <img height="15px" width="15px" src="/media/becquer.svg"></a></p> 
+  {% ifequal book.summary "" %}
+      <p><strong>Genre:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+  {% else %}
+    <p>
+          <strong>Genre:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+  <div class="sum"> <p><strong>Summary:<br/></strong>{{ book.summary }}
+       </div>
+  {% endifequal %}
+     </div>
+   {% if user.is_authenticated %}
+  <a class="aa" href="{{book.URLS}}"><img height="50px" width="50px" src="/media/drive.svg" ></a>
+   {%else%}
+<a class="aa" href="{%url 'login'%}?next={{request.path}}"><img height="50px" width="50px" src="/media/drive.svg" ></a>
+</div>
+   
+   {% endif %}
+{% endblock %}

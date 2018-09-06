@@ -1,0 +1,60 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<style>
+    .pr{
+    position:relative;
+    color:floralwhite;
+    background-color:gray;
+    border-radius:10px;
+    width:70%;
+    min-height: 1000px;
+    left:15%;
+    text-align: center;
+    }
+    .pr h1{
+    font-family: 'Concert One', cursive;
+
+    font-family: 'Sawarabi Gothic', sans-serif;
+
+    font-family: 'Indie Flower', cursive;
+    margin-bottom: 10px;
+
+    }
+    .pr img{
+        border-radius: 100%;
+    }
+    .pr .details{
+        text-align: left;
+        overflow-wrap: break-word;
+    }
+    .pr .details p{
+        margin-left: 10px;
+                font-family: 'Concert One', cursive;
+        font-size: 20px;
+    }
+    .bt{
+        position: relative;
+       margin: auto;
+    }
+
+</style>
+
+<div class="pr">
+<h1>Sign in</h1>
+ <form method="post">
+ {% csrf_token %}
+        {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+      </p>
+          {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+    {% endfor %}
+     {% endfor %}
+    <button class="bt" type="submit">Sign up</button>
+  </form>
+</div>
+
+{% endblock %}
